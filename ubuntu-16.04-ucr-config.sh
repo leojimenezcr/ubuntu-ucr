@@ -64,7 +64,7 @@ packages="$packages libreoffice"
 # proyecto base de Google Chrome.
 if [ "$arch" == 'x86_64' ]
 then
-  sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+  sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
   packages="$packages google-chrome-stable"
 else
@@ -77,7 +77,7 @@ fi
 # demonio segun la arquitectura del sistema. Este se copia a /etc/skel para que
 # este disponible de manera predeterminada en las cuentas de usuario que se
 # vayan creando.
-sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ xenial main" >> /etc/apt/sources.list.d/dropbox.list'
+sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ xenial main" > /etc/apt/sources.list.d/dropbox.list'
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 
 # descarga el respectivo demonio al home y a skel segun la arquitectura
