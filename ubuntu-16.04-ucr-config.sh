@@ -143,9 +143,10 @@ sudo cp "$BASEDIR/30_ucr-gnome-default-settings.gschema.override" /usr/share/gli
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 # Configura el fondo de pantalla y la imagen en la pantalla de bloqueo
-sudo wget http://softwarelibre.ucr.ac.cr/archivos/artwork/ubuntu-16.04-ucr-background.jpg -P /usr/share/backgrounds/ucr
-gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/ucr/ubuntu-16.04-ucr-background.jpg"
-gsettings set org.gnome.desktop.screensaver picture-uri "file:///usr/share/backgrounds/ucr/ubuntu-16.04-ucr-background.jpg"
+sudo mkdir -p /usr/share/backgrounds/ucr-gnome/
+sudo cp "$BASEDIR/ubuntu-16.04-ucr-background.jpg" /usr/share/backgrounds/ucr-gnome/
+gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/ucr-gnome/ubuntu-16.04-ucr-background.jpg"
+gsettings set org.gnome.desktop.screensaver picture-uri "file:///usr/share/backgrounds/ucr-gnome/ubuntu-16.04-ucr-background.jpg"
 
 # Distribuciones de teclado: latinoamericano, espanol, ingles, ingles internacional
 gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'latam'), ('xkb', 'es'), ('xkb', 'us'), ('xkb', 'us+alt-intl')]"
