@@ -37,7 +37,7 @@ Capturas de pantalla
 1. Realice una instalación en limpio de Ubuntu 16.04 LTS
 2. Conéctese a Internet
 3. Descargue el proyecto: `wget https://github.com/leojimenezcr/ubuntu-ucr/archive/master.zip`
-4. Descomprima: `unzip master.git`
+4. Descomprima: `unzip master.zip`
 5. Ingrese al directorio: `cd ubuntu-ucr-master`
 6. De permisos de ejecución al script: `chmod +x ubuntu-16.04-ucr-config.sh`
 7. Ejecútelo: `./ubuntu-16.04-ucr-config.sh`
