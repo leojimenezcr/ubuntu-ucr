@@ -24,6 +24,9 @@ then
 fi
 
 
+# Identifica el direcctorio en el que se está ejecutando
+BASEDIR=$(dirname "$0")
+
 # Identifica la arquitectura de la computadora (x86_64, x86, ...)
 arch=$(uname -m)
 
@@ -135,6 +138,10 @@ sudo apt-get clean
 # El esquema, nombre y valor utilizado por gsettings puede ser obtenido
 # facilmente con el Editor de dconf
 
+# Copia esquema que sobrescribe configuracion de Gnome-shell y lo compila
+sudo cp "$BASEDIR/30_ucr-gnome-default-settings.gschema.override" /usr/share/glib-2.0/schemas/
+sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
+
 # Configura el fondo de pantalla y la imagen en la pantalla de bloqueo
 sudo wget http://softwarelibre.ucr.ac.cr/archivos/artwork/ubuntu-16.04-ucr-background.jpg -P /usr/share/backgrounds/ucr
 gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/ucr/ubuntu-16.04-ucr-background.jpg"
@@ -167,11 +174,6 @@ gsettings set org.gnome.shell.extensions.user-theme name "Arc-Dark"
 
 # Aplicaciones favoritas que se muestran en el dock
 gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'firefox.desktop', 'google-chrome.desktop', 'chromium-browser.desktop', 'thunderbird.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'spotify.desktop', 'auri.desktop', 'yelp.desktop']"
-
-# Copia la configuracion generada por dconf a /etc/skel para que sea la
-# predeterminada en la creacion de una nueva cuenta
-sudo mkdir -p /etc/skel/.config/dconf/
-sudo cp ~/.config/dconf/user /etc/skel/.config/dconf/
 
 # Desabilita apport para no mostrar molestos mensajes de fallos
 sudo sed -i \
