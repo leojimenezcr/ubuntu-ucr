@@ -140,7 +140,7 @@ sudo apt-get clean
 
 # Fondo de pantalla y la imagen en la pantalla de bloqueo
 sudo mkdir -p /usr/share/backgrounds/ucr-gnome/
-sudo cp "$BASEDIR/ubuntu-16.04-ucr-background.jpg" /usr/share/backgrounds/ucr-gnome/
+sudo cp $BASEDIR/ubuntu-16.04-ucr-background.jpg /usr/share/backgrounds/ucr-gnome/
 
 # Plugins de Gnome-shell
 sudo wget -O TopIcons@phocean.net.shell-extension.zip "https://extensions.gnome.org/download-extension/TopIcons@phocean.net.shell-extension.zip?version_tag=6608"
