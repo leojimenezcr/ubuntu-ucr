@@ -24,7 +24,7 @@ then
 fi
 
 
-# Identifica el direcctorio en el que se está ejecutando
+# Identifica el directorio en el que se esta ejecutando
 BASEDIR=$(dirname "$0")
 
 # Identifica la arquitectura de la computadora (x86_64, x86, ...)
@@ -135,7 +135,7 @@ sudo apt-get clean
 
 # Gnome-shell
 #
-# El esquema, nombre y valor utilizado por gsettings puede ser obtenido
+# El esquema, nombre y valor utilizado puede ser obtenido
 # facilmente con el Editor de dconf
 
 # Fondo de pantalla y la imagen en la pantalla de bloqueo
@@ -143,7 +143,7 @@ sudo mkdir -p /usr/share/backgrounds/ucr-gnome/
 sudo cp "$BASEDIR/ubuntu-16.04-ucr-background.jpg" /usr/share/backgrounds/ucr-gnome/
 
 # Plugins de Gnome-shell
-wget -O TopIcons@phocean.net.shell-extension.zip "https://extensions.gnome.org/download-extension/TopIcons@phocean.net.shell-extension.zip?version_tag=6608"
+sudo wget -O TopIcons@phocean.net.shell-extension.zip "https://extensions.gnome.org/download-extension/TopIcons@phocean.net.shell-extension.zip?version_tag=6608"
 sudo unzip TopIcons@phocean.net.shell-extension.zip -d /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
 sudo rm TopIcons@phocean.net.shell-extension.zip
 
@@ -151,7 +151,7 @@ sudo rm TopIcons@phocean.net.shell-extension.zip
 sudo cp "$BASEDIR/30_ucr-gnome-default-settings.gschema.override" /usr/share/glib-2.0/schemas/
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 
-# Reinicia todos los valores redifinidos en archivo override para la sesion actual
+# Reinicia todos los valores redefinidos en archivo override para la sesion actual
 # Si no existe una sesion X11 falla y no hace nada
 gsettings reset org.gnome.desktop.background picture-uri
 gsettings reset org.gnome.desktop.screensaver picture-uri
@@ -168,6 +168,7 @@ gsettings reset org.gnome.shell enabled-extensions
 #gsettings reset org.gnome.shell.extensions.topicons tray-order
 gsettings reset org.gnome.shell.extensions.user-theme name
 gsettings reset org.gnome.shell favorite-apps
+
 
 # Desabilita apport para no mostrar molestos mensajes de fallos
 sudo sed -i \
