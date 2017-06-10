@@ -149,7 +149,7 @@ sudo chmod -R 755 /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
 sudo rm TopIcons@phocean.net.shell-extension.zip
 
 # Copia esquema que sobrescribe configuracion de Gnome-shell y lo compila
-sudo cp "$BASEDIR/30_ucr-gnome-default-settings.gschema.override" /usr/share/glib-2.0/schemas/
+sudo cp $BASEDIR/30_ucr-gnome-default-settings.gschema.override /usr/share/glib-2.0/schemas/
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 # Reinicia todos los valores redefinidos en archivo override para la sesion actual
