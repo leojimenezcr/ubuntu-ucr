@@ -145,6 +145,7 @@ sudo cp "$BASEDIR/ubuntu-16.04-ucr-background.jpg" /usr/share/backgrounds/ucr-gn
 # Plugins de Gnome-shell
 sudo wget -O TopIcons@phocean.net.shell-extension.zip "https://extensions.gnome.org/download-extension/TopIcons@phocean.net.shell-extension.zip?version_tag=6608"
 sudo unzip TopIcons@phocean.net.shell-extension.zip -d /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
+sudo chmod -R 755 /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
 sudo rm TopIcons@phocean.net.shell-extension.zip
 
 # Copia esquema que sobrescribe configuracion de Gnome-shell y lo compila
