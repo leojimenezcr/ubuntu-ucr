@@ -169,6 +169,7 @@ gsettings reset org.gnome.shell enabled-extensions
 #gsettings reset org.gnome.shell.extensions.topicons tray-order
 gsettings reset org.gnome.shell.extensions.user-theme name
 gsettings reset org.gnome.shell favorite-apps
+gsettings reset org.gnome.nautilus.preferences show-directories-first
 
 
 # Desabilita apport para no mostrar molestos mensajes de fallos
