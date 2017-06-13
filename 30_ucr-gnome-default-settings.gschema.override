@@ -31,3 +31,5 @@ name = "Arc-Dark"
 [org.gnome.shell]
 favorite-apps = ['org.gnome.Nautilus.desktop', 'firefox.desktop', 'google-chrome.desktop', 'chromium-browser.desktop', 'thunderbird.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'spotify.desktop', 'auri.desktop', 'yelp.desktop']
 
+[org.gnome.nautilus.preferences]
+sort-directories-first = true
