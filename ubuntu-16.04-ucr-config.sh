@@ -25,7 +25,8 @@ fi
 
 
 # Identifica el directorio en el que se esta ejecutando
-BASEDIR=$(dirname "$0")
+SCRIPTPATH=$(readlink -f $0)
+BASEDIR=$(dirname "$SCRIPTPATH")
 
 # Identifica la arquitectura de la computadora (x86_64, x86, ...)
 arch=$(uname -m)
@@ -174,7 +175,7 @@ sudo apt-get clean
 
 # Fondo de pantalla y la imagen en la pantalla de bloqueo
 sudo mkdir -p /usr/share/backgrounds/ucr-gnome/
-sudo cp $BASEDIR/ubuntu-16.04-ucr-background.jpg /usr/share/backgrounds/ucr-gnome/
+sudo cp "$BASEDIR"/ubuntu-16.04-ucr-background.jpg /usr/share/backgrounds/ucr-gnome/
 
 # Plugins de Gnome-shell
 sudo wget -O TopIcons@phocean.net.shell-extension.zip "https://extensions.gnome.org/download-extension/TopIcons@phocean.net.shell-extension.zip?version_tag=6608"
@@ -183,7 +184,7 @@ sudo chmod -R 755 /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
 sudo rm TopIcons@phocean.net.shell-extension.zip
 
 # Copia esquema que sobrescribe configuracion de Gnome-shell y lo compila
-sudo cp $BASEDIR/30_ucr-gnome-default-settings.gschema.override /usr/share/glib-2.0/schemas/
+sudo cp "$BASEDIR"/30_ucr-gnome-default-settings.gschema.override /usr/share/glib-2.0/schemas/
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 # Reinicia todos los valores redefinidos en archivo override para la sesion actual
