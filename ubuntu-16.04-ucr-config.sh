@@ -206,6 +206,11 @@ gsettings reset org.gnome.shell.extensions.user-theme name
 gsettings reset org.gnome.shell favorite-apps
 gsettings reset org.gnome.nautilus.preferences show-directories-first
 
+echo "*** *** *** *** *** ***"
+echo ""
+echo "AVISO: Si tiene una sesión gráfica abierta, deberá reiniciarla."
+echo ""
+echo "*** *** *** *** *** ***"
 
 # Desabilita apport para no mostrar molestos mensajes de fallos
 sudo sed -i \
