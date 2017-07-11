@@ -36,6 +36,16 @@ arch=$(uname -m)
 packages=""
 
 
+# Actualizaciones desatendidas
+#
+# Incluye las actualizaciones del sistema ademas de las de seguridad
+# que se configuran de manera predeterminada.
+sudo sed -i \
+-e 's/^\/\/."\${distro_id}:\${distro_codename}-updates";/\t"\${distro_id}:\${distro_codename}-updates";/' \
+-e 's/^\/\/Unattended-Upgrade::Remove-Unused-Dependencies "false";/Unattended-Upgrade::Remove-Unused-Dependencies "true";/' \
+/etc/apt/apt.conf.d/50unattended-upgrades
+
+
 # Codecs, tipografias de Microsoft y Adobe Flash
 #
 # Se aprueba previamente la licencia de uso de las tipografias Microsoft
@@ -47,6 +57,11 @@ packages="$packages ubuntu-restricted-extras"
 #
 # Se sustituye la version de Java por la desarrollada por Oracle.
 sudo add-apt-repository -y ppa:webupd8team/java
+
+sudo sed -i \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-webupd8team-java:xenial";/' \
+/etc/apt/apt.conf.d/50unattended-upgrades
+
 echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 packages="$packages oracle-java8-installer"
 
@@ -55,6 +70,11 @@ packages="$packages oracle-java8-installer"
 # Se anade el repositorio de LibreOffice para actualizar a la ultima version
 # estable. Los repositorios de Ubuntu 16.04 tienen una version antigua.
 sudo add-apt-repository -y ppa:libreoffice/libreoffice-5-2
+
+sudo sed -i \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-libreoffice-libreoffice-5-2:xenial";/' \
+/etc/apt/apt.conf.d/50unattended-upgrades
+
 packages="$packages libreoffice"
 
 # Google Chrome o Chromium
@@ -66,6 +86,11 @@ if [ "$arch" == 'x86_64' ]
 then
   sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
   wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
+
+  sudo sed -i \
+  -e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"Google, Inc.:stable";/' \
+  /etc/apt/apt.conf.d/50unattended-upgrades
+
   packages="$packages google-chrome-stable"
 else
   packages="$packages chromium-browser"
@@ -78,12 +103,21 @@ fi
 sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ xenial main" > /etc/apt/sources.list.d/dropbox.list'
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 
+sudo sed -i \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"Dropbox.com:wily";/' \
+/etc/apt/apt.conf.d/50unattended-upgrades
+
 #packages="$packages dropbox"
 
 # GIMP
 #
 # Ultima version estable
 sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
+
+sudo sed -i \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-otto-kesselgulasch-gimp-edge:xenial";/' \
+/etc/apt/apt.conf.d/50unattended-upgrades
+
 packages="$packages gimp"
 
 # Arc gtk theme
@@ -99,6 +133,11 @@ packages="$packages arc-theme"
 # incluye todos o casi todos los iconos utilizados. Este paquete se configura,
 # una vez instalado, en la seccion de Gnome-shell.
 sudo add-apt-repository -y ppa:numix/ppa
+
+sudo sed -i \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-noobslab-themes:xenial";/' \
+/etc/apt/apt.conf.d/50unattended-upgrades
+
 packages="$packages numix-icon-theme numix-icon-theme-circle"
 
 # Spotify
@@ -107,11 +146,17 @@ packages="$packages numix-icon-theme numix-icon-theme-circle"
 # ancho de banda.
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+
+sudo sed -i \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"Spotify LTD:stable";/' \
+/etc/apt/apt.conf.d/50unattended-upgrades
+
 packages="$packages spotify-client"
 
 # Paquetes varios
 # - Thunderbird, al ser multiplataforma, su perfil se puede migrar facilmente
-packages="$packages thunderbird thunderbird-locale-es"
+# - unattended-upgrades para actualizaciones automaticas
+packages="$packages thunderbird thunderbird-locale-es unattended-upgrades"
 
 
 # Actualizacion del sistema e instalacion de los paquetes indicados
@@ -189,13 +234,4 @@ Terminal=false
 Type=Application
 Categories=Settings;HardwareSettings;
 Keywords=Network;Wireless;Wi-Fi;Wifi;LAN;AURI;Eduroam;Internet;Red" > /usr/share/applications/auri.desktop'
-
-# Actualizaciones desatendidas
-#
-# Incluye las actualizaciones regulares (Mozilla Firefox, LibreOffice, ...)
-# ademas de las de seguridad que se configuran de manera predeterminada.
-sudo sed -i \
--e 's/^\/\/."\${distro_id}:\${distro_codename}-updates";/\t"\${distro_id}:\${distro_codename}-updates";/' \
--e 's/^\/\/Unattended-Upgrade::Remove-Unused-Dependencies "false";/Unattended-Upgrade::Remove-Unused-Dependencies "true";/' \
-/etc/apt/apt.conf.d/50unattended-upgrades
 
