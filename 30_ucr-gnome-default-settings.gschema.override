@@ -10,7 +10,6 @@ sources = [('xkb', 'latam'), ('xkb', 'es'), ('xkb', 'us'), ('xkb', 'us+alt-intl'
 [org.gnome.desktop.interface]
 clock-format = "12h"
 clock-show-date = true
-cursor-theme = "ComixCursors-Opaque-Black"
 gtk-theme = "Arc-Darker"
 icon-theme = "Numix-Circle"
 
