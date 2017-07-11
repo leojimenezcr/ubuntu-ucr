@@ -73,23 +73,12 @@ fi
 
 # Dropbox
 #
-# Se anade el repositorio y se descarga, en la carpeta personal, el respectivo
-# demonio segun la arquitectura del sistema. Este se copia a /etc/skel para que
-# este disponible de manera predeterminada en las cuentas de usuario que se
-# vayan creando.
+# Añade el repositorio de dropbox, pero no instala el paquete. Si no que
+# lo deja disponible para cuando un usuario requiera utilizarlo.
 sudo sh -c 'echo "deb http://linux.dropbox.com/ubuntu/ xenial main" > /etc/apt/sources.list.d/dropbox.list'
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 
-# descarga el respectivo demonio al home y a skel segun la arquitectura
-if [ "$arch" == 'x86_64' ]
-then
-  cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-else
-  cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86" | tar xzf -
-fi
-sudo cp -r .dropbox-dist /etc/skel
-
-packages="$packages dropbox"
+#packages="$packages dropbox"
 
 # GIMP
 #
