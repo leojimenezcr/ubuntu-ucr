@@ -66,14 +66,14 @@ sudo sed -i \
 echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
 packages="$packages oracle-java8-installer"
 
-# LibreOffice 5.2
+# LibreOffice 5.3
 #
 # Se anade el repositorio de LibreOffice para actualizar a la ultima version
 # estable. Los repositorios de Ubuntu 16.04 tienen una version antigua.
-sudo add-apt-repository -y ppa:libreoffice/libreoffice-5-2
+sudo add-apt-repository -y ppa:libreoffice/libreoffice-5-3
 
 sudo sed -i \
--e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-libreoffice-libreoffice-5-2:xenial";/' \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-libreoffice-libreoffice-5-3:xenial";/' \
 /etc/apt/apt.conf.d/50unattended-upgrades
 
 packages="$packages libreoffice"
