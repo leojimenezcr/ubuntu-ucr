@@ -10,7 +10,7 @@
 # Escrito por la Comunidad de Software Libre de la Universidad de Costa Rica
 # http://softwarelibre.ucr.ac.cr
 #
-# Github: https://github.com/leojimenezcr/ubuntu-gnome-16.04-ucr
+# Github: https://github.com/leojimenezcr/ubuntu-ucr
 
 
 # Mensaje de advertencia
