@@ -41,6 +41,18 @@ packages=""
 #
 # Incluye las actualizaciones del sistema ademas de las de seguridad
 # que se configuran de manera predeterminada.
+#
+#
+# Nota: puede anadir origenes de terceros de la forma:
+#  Unattended-Upgrade::Allowed-Origins {
+#    "Origin:Suite";
+#    ...
+#  };
+# en el archivo /etc/apt/apt.conf.d/50unattended-upgrades
+#
+# Consulte los valores 'Origin' y 'Suite' en los archivos *_InRelease o *_Release
+# ubicados en /var/lib/apt/lists/
+#
 sudo sed -i \
 -e 's/^\/\/."\${distro_id}:\${distro_codename}-updates";/\t"\${distro_id}:\${distro_codename}-updates";/' \
 -e 's/^\/\/Unattended-Upgrade::Remove-Unused-Dependencies "false";/Unattended-Upgrade::Remove-Unused-Dependencies "true";/' \
