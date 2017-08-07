@@ -138,6 +138,11 @@ packages="$packages gimp"
 # Popular tema gtk que ofrece un mayor atractivo visual. Este se configura,
 # una vez instalado, en la seccion de Gnome-shell.
 sudo add-apt-repository -y ppa:noobslab/themes
+
+sudo sed -i \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-noobslab-themes:xenial";/' \
+/etc/apt/apt.conf.d/50unattended-upgrades
+
 packages="$packages arc-theme"
 
 # Numix icon theme
@@ -148,7 +153,7 @@ packages="$packages arc-theme"
 sudo add-apt-repository -y ppa:numix/ppa
 
 sudo sed -i \
--e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-noobslab-themes:xenial";/' \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-numix:xenial";/' \
 /etc/apt/apt.conf.d/50unattended-upgrades
 
 packages="$packages numix-icon-theme numix-icon-theme-circle"
