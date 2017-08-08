@@ -41,6 +41,18 @@ packages=""
 #
 # Incluye las actualizaciones del sistema ademas de las de seguridad
 # que se configuran de manera predeterminada.
+#
+#
+# Nota: puede anadir origenes de terceros de la forma:
+#  Unattended-Upgrade::Allowed-Origins {
+#    "Origin:Suite";
+#    ...
+#  };
+# en el archivo /etc/apt/apt.conf.d/50unattended-upgrades
+#
+# Consulte los valores 'Origin' y 'Suite' en los archivos *_InRelease o *_Release
+# ubicados en /var/lib/apt/lists/
+#
 sudo sed -i \
 -e 's/^\/\/."\${distro_id}:\${distro_codename}-updates";/\t"\${distro_id}:\${distro_codename}-updates";/' \
 -e 's/^\/\/Unattended-Upgrade::Remove-Unused-Dependencies "false";/Unattended-Upgrade::Remove-Unused-Dependencies "true";/' \
@@ -126,6 +138,11 @@ packages="$packages gimp"
 # Popular tema gtk que ofrece un mayor atractivo visual. Este se configura,
 # una vez instalado, en la seccion de Gnome-shell.
 sudo add-apt-repository -y ppa:noobslab/themes
+
+sudo sed -i \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-noobslab-themes:xenial";/' \
+/etc/apt/apt.conf.d/50unattended-upgrades
+
 packages="$packages arc-theme"
 
 # Numix icon theme
@@ -136,7 +153,7 @@ packages="$packages arc-theme"
 sudo add-apt-repository -y ppa:numix/ppa
 
 sudo sed -i \
--e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-noobslab-themes:xenial";/' \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-numix:xenial";/' \
 /etc/apt/apt.conf.d/50unattended-upgrades
 
 packages="$packages numix-icon-theme numix-icon-theme-circle"
