@@ -126,6 +126,18 @@ sudo sed -i \
 packages="$packages shotwell"
 purgepackages="$purgepackages gnome-photos"
 
+# Rhythmbox
+#
+# Ultima version estable
+sudo add-apt-repository -y ppa:fossfreedom/rhythmbox
+
+sudo sed -i \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-fossfreedom-rhythmbox:xenial";/' \
+/etc/apt/apt.conf.d/50unattended-upgrades
+
+packages="$packages rhythmbox rhythmbox-plugins"
+purgepackages="$purgepackages gnome-music"
+
 # Dropbox
 #
 # Añade el repositorio de dropbox, pero no instala el paquete. Si no que
