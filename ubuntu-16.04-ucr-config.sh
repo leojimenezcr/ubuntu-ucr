@@ -41,6 +41,11 @@ packages=""
 #  purgepackages="$purgepackages paquete1 paquete2 paquete3"
 purgepackages=""
 
+# En esta variable se iran concatenando las rutas de
+# archivos .desktop, de aplicaciones que deben iniciar
+# al cargar sesion, de la forma:
+#  autostart="$autostart ruta1 ruta2 ruta2"
+autostart=""
 
 # Actualizaciones desatendidas
 #
@@ -214,6 +219,9 @@ sudo apt-get -y purge $purgepackages
 sudo apt-get -y autoremove
 sudo apt-get clean
 
+# Aplicaciones al inicio
+sudo mkdir -p /etc/skel/.config/autostart
+sudo cp $autostart /etc/skel/.config/autostart/
 
 # Gnome-shell
 #
