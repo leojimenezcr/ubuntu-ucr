@@ -93,7 +93,7 @@ sudo sed -i \
 -e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-libreoffice-libreoffice-5-3:xenial";/' \
 /etc/apt/apt.conf.d/50unattended-upgrades
 
-packages="$packages libreoffice libreoffice-style-sift"
+packages="$packages libreoffice libreoffice-style-sifr"
 
 # Google Chrome o Chromium
 #
