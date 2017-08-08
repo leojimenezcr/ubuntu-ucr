@@ -208,7 +208,7 @@ packages="$packages spotify-client"
 # Paquetes varios
 # - Thunderbird, al ser multiplataforma, su perfil se puede migrar facilmente
 # - unattended-upgrades para actualizaciones automaticas
-# - caffeine para inibir el descansador de pantalla, idea para una exposicion
+# - caffeine para inibir el descansador de pantalla, ideal para una exposicion
 packages="$packages thunderbird thunderbird-locale-es unattended-upgrades caffeine"
 purgepackages="$purgepackages evolution evolution-plugins evolution-common libevolution evolution-data-server-online-accounts"
 autostart="$autostart /usr/share/applications/caffeine.desktop /usr/share/applications/caffeine-indicator.desktop"
