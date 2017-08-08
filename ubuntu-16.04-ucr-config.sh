@@ -114,6 +114,18 @@ else
   packages="$packages chromium-browser"
 fi
 
+# Shotwell
+#
+# Ultima version estable
+sudo add-apt-repository -y ppa:yg-jensge/shotwell
+
+sudo sed -i \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-yg-jensge-shotwell:xenial";/' \
+/etc/apt/apt.conf.d/50unattended-upgrades
+
+packages="$packages shotwell"
+purgepackages="$purgepackages gnome-photos"
+
 # Dropbox
 #
 # Añade el repositorio de dropbox, pero no instala el paquete. Si no que
