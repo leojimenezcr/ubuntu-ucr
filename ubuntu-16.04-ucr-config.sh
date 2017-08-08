@@ -36,6 +36,11 @@ arch=$(uname -m)
 #  packages="$packages paquete1 paquete2 paquete3"
 packages=""
 
+# En esta variable se iran concatenando los nombres de los paquetes a
+# des-instalar, de la forma:
+#  purgepackages="$purgepackages paquete1 paquete2 paquete3"
+purgepackages=""
+
 
 # Actualizaciones desatendidas
 #
@@ -175,12 +180,13 @@ packages="$packages spotify-client"
 # - Thunderbird, al ser multiplataforma, su perfil se puede migrar facilmente
 # - unattended-upgrades para actualizaciones automaticas
 packages="$packages thunderbird thunderbird-locale-es unattended-upgrades"
-
+purgepackages="$purgepackages evolution evolution-plugins evolution-common libevolution evolution-data-server-online-accounts"
 
 # Actualizacion del sistema e instalacion de los paquetes indicados
 sudo apt-get update
 sudo apt-get -y dist-upgrade
 sudo apt-get -y install $packages
+sudo apt-get -y purge $purgepackages
 sudo apt-get -y autoremove
 sudo apt-get clean
 
