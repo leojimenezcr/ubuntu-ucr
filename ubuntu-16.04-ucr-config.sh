@@ -203,10 +203,10 @@ sudo unzip TopIcons@phocean.net.shell-extension.zip -d /usr/share/gnome-shell/ex
 sudo chmod -R 755 /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
 sudo rm TopIcons@phocean.net.shell-extension.zip
 
-sudo wget -O TopIcons@phocean.net.shell-extension.zip "https://extensions.gnome.org/download-extension/TopIcons@phocean.net.shell-extension.zip?version_tag=6$
-sudo unzip TopIcons@phocean.net.shell-extension.zip -d /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
-sudo chmod -R 755 /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
-sudo rm TopIcons@phocean.net.shell-extension.zip
+sudo wget -O mediaplayer@patapon.info.v57.shell-extension.zip "https://extensions.gnome.org/download-extension/mediaplayer@patapon.info.shell-extension.zip?version_tag=7152"
+sudo unzip mediaplayer@patapon.info.v57.shell-extension.zip -d /usr/share/gnome-shell/extensions/mediaplayer@patapon.info/
+sudo chmod -R 755 /usr/share/gnome-shell/extensions/mediaplayer@patapon.info/
+sudo rm mediaplayer@patapon.info.v57.shell-extension.zip
 
 # Copia esquema que sobrescribe configuracion de Gnome-shell y lo compila
 sudo cp "$BASEDIR"/30_ucr-gnome-default-settings.gschema.override /usr/share/glib-2.0/schemas/
