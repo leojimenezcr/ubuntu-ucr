@@ -195,7 +195,15 @@ sudo mkdir -p /usr/share/backgrounds/ucr-gnome/
 sudo cp "$BASEDIR"/ubuntu-16.04-ucr-background.jpg /usr/share/backgrounds/ucr-gnome/
 
 # Plugins de Gnome-shell
+#
+# Como instalar una extension desde la linea de comandos:
+#  http://bernaerts.dyndns.org/linux/76-gnome/283-gnome-shell-install-extension-command-line-script
 sudo wget -O TopIcons@phocean.net.shell-extension.zip "https://extensions.gnome.org/download-extension/TopIcons@phocean.net.shell-extension.zip?version_tag=6608"
+sudo unzip TopIcons@phocean.net.shell-extension.zip -d /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
+sudo chmod -R 755 /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
+sudo rm TopIcons@phocean.net.shell-extension.zip
+
+sudo wget -O TopIcons@phocean.net.shell-extension.zip "https://extensions.gnome.org/download-extension/TopIcons@phocean.net.shell-extension.zip?version_tag=6$
 sudo unzip TopIcons@phocean.net.shell-extension.zip -d /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
 sudo chmod -R 755 /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
 sudo rm TopIcons@phocean.net.shell-extension.zip
