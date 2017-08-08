@@ -17,7 +17,7 @@ icon-theme = "Numix-Circle"
 button-layout = "appmenu:minimize,maximize,close"
 
 [org.gnome.shell]
-enabled-extensions = ['TopIcons@phocean.net', 'user-theme@gnome-shell-extensions.gcampax.github.com']
+enabled-extensions = ['TopIcons@phocean.net', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'mediaplayer@patapon.info']
 
 [org.gnome.shell.extensions.topicons]
 icon-opacity = "255"
