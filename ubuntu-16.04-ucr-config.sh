@@ -85,7 +85,7 @@ packages="$packages ubuntu-restricted-extras"
 sudo add-apt-repository -y ppa:webupd8team/java
 
 sudo sed -i \
--e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-webupd8team-java:xenial";/' \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-webupd8team-java:${distro_codename}";/' \
 /etc/apt/apt.conf.d/50unattended-upgrades
 
 echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections
@@ -98,7 +98,7 @@ packages="$packages oracle-java8-installer"
 sudo add-apt-repository -y ppa:libreoffice/libreoffice-5-3
 
 sudo sed -i \
--e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-libreoffice-libreoffice-5-3:xenial";/' \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-libreoffice-libreoffice-5-3:${distro_codename}";/' \
 /etc/apt/apt.conf.d/50unattended-upgrades
 
 packages="$packages libreoffice libreoffice-style-sifr"
@@ -128,7 +128,7 @@ fi
 sudo add-apt-repository -y ppa:yg-jensge/shotwell
 
 sudo sed -i \
--e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-yg-jensge-shotwell:xenial";/' \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-yg-jensge-shotwell:${distro_codename}";/' \
 /etc/apt/apt.conf.d/50unattended-upgrades
 
 packages="$packages shotwell"
@@ -140,7 +140,7 @@ purgepackages="$purgepackages gnome-photos"
 sudo add-apt-repository -y ppa:fossfreedom/rhythmbox
 
 sudo sed -i \
--e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-fossfreedom-rhythmbox:xenial";/' \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-fossfreedom-rhythmbox:${distro_codename}";/' \
 /etc/apt/apt.conf.d/50unattended-upgrades
 
 packages="$packages rhythmbox rhythmbox-plugins"
@@ -165,7 +165,7 @@ sudo sed -i \
 sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
 
 sudo sed -i \
--e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-otto-kesselgulasch-gimp-edge:xenial";/' \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-otto-kesselgulasch-gimp-edge:${distro_codename}";/' \
 /etc/apt/apt.conf.d/50unattended-upgrades
 
 packages="$packages gimp"
@@ -177,7 +177,7 @@ packages="$packages gimp"
 sudo add-apt-repository -y ppa:noobslab/themes
 
 sudo sed -i \
--e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-noobslab-themes:xenial";/' \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-noobslab-themes:${distro_codename}";/' \
 /etc/apt/apt.conf.d/50unattended-upgrades
 
 packages="$packages arc-theme"
@@ -190,7 +190,7 @@ packages="$packages arc-theme"
 sudo add-apt-repository -y ppa:numix/ppa
 
 sudo sed -i \
--e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-numix:xenial";/' \
+-e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-numix:${distro_codename}";/' \
 /etc/apt/apt.conf.d/50unattended-upgrades
 
 packages="$packages numix-icon-theme numix-icon-theme-circle"
