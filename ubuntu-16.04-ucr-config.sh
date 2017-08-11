@@ -52,6 +52,9 @@ autostart=""
 # Incluye las actualizaciones del sistema ademas de las de seguridad
 # que se configuran de manera predeterminada.
 #
+# Simular la instalacion y asi comprobar la configuracion ejecutando:
+#  sudo unattended-upgrades --dry-run
+#
 #
 # Nota: puede anadir origenes de terceros de la forma:
 #  Unattended-Upgrade::Allowed-Origins {
