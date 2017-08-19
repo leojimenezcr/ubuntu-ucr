@@ -245,8 +245,8 @@ then
   # facilmente con el Editor de dconf
 
   # Fondo de pantalla y la imagen en la pantalla de bloqueo
-  sudo mkdir -p /usr/share/backgrounds/ucr-gnome/
-  sudo cp "$BASEDIR"/ubuntu-16.04-ucr-background.jpg /usr/share/backgrounds/ucr-gnome/
+  sudo mkdir -p /usr/share/backgrounds/ucr/
+  sudo cp "$BASEDIR"/ubuntu-16.04-ucr-background.jpg /usr/share/backgrounds/ucr/
 
   # Plugins de Gnome-shell
   #
