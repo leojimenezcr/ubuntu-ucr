@@ -3,7 +3,7 @@
 # Realiza una configuracion base de un sistema Ubuntu 16.04 LTS.
 #
 # La configuracion y programas instalados se ajustan al uso tipico de
-# estudiantes, docentes y administrativos de la Unversidad de Costa Rica.
+# estudiantes, docentes y administrativos de la Universidad de Costa Rica.
 # Esta personalizacion no intenta imitar otros sistemas, si no ofrecer la
 # innovadora experiencia de usuario de un entorno de escritorio libre.
 #
@@ -13,7 +13,7 @@
 # Github: https://github.com/leojimenezcr/ubuntu-ucr
 
 
-# Mensaje de advertencia
+# MENSAJE DE ADVERTENCIA
 echo ""
 echo "Este script podría sobreescribir la configuración actual, se recomienda ejecutarlo en una instalación limpia. Si este no es un sistema recién instalado o no ha realizado un respaldo, cancele la ejecución."
 echo ""
@@ -23,6 +23,8 @@ then
 	exit
 fi
 
+
+# VARIABLES
 
 # Identifica el directorio en el que se esta ejecutando
 SCRIPTPATH=$(readlink -f $0)
@@ -46,6 +48,9 @@ purgepackages=""
 # al cargar sesion, de la forma:
 #  autostart="$autostart ruta1 ruta2 ruta2"
 autostart=""
+
+
+# REPOSITORIOS Y PAQUETES
 
 # Actualizaciones desatendidas
 #
@@ -224,9 +229,8 @@ sudo apt-get -y purge $purgepackages
 sudo apt-get -y autoremove
 sudo apt-get clean
 
-# Aplicaciones al inicio
-sudo mkdir -p /etc/skel/.config/autostart
-sudo cp $autostart /etc/skel/.config/autostart/
+
+# ENTORNO DE ESCRITORIO
 
 # Gnome-shell
 #
@@ -279,20 +283,16 @@ echo "AVISO: Si tiene una sesión gráfica abierta, deberá reiniciarla."
 echo ""
 echo "*** *** *** *** *** ***"
 
+
+# CONFIGURACION GENERAL
+
 # Desabilita apport para no mostrar molestos mensajes de fallos
 sudo sed -i \
 -e 's/enabled=1/enabled=0/' \
 /etc/default/apport
 
-# Terminal
-#
-# Se habilitan los colores del interprete de comandos para facilitar el uso
-# a los usuarios mas novatos.
-sudo sed -i \
--e 's/^#force_color_prompt=yes/force_color_prompt=yes/' \
-/etc/skel/.bashrc
 
-# AURI
+# Script de configuración de red inalámbrica de la UCR (AURI)
 #
 # Descarga la herramienta de configuracion de AURI y Eduroam y crea el
 # respectivo .desktop para que se muestre entre las apliciones.
@@ -307,4 +307,22 @@ Terminal=false
 Type=Application
 Categories=Settings;HardwareSettings;
 Keywords=Network;Wireless;Wi-Fi;Wifi;LAN;AURI;Eduroam;Internet;Red" > /usr/share/applications/auri.desktop'
+
+
+# PERFIL PREDETERMINADO
+
+# Aplicaciones al inicio
+sudo mkdir -p /etc/skel/.config/autostart
+sudo cp $autostart /etc/skel/.config/autostart/
+
+# Terminal
+#
+# Se habilitan los colores del interprete de comandos para facilitar el uso
+# a los usuarios mas novatos.
+sudo sed -i \
+-e 's/^#force_color_prompt=yes/force_color_prompt=yes/' \
+/etc/skel/.bashrc
+
+# Se aplica al usuario actual
+cp -rf /etc/skel/.* /etc/skel/* ~/
 
