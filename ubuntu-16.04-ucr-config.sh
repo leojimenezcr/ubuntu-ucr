@@ -233,56 +233,58 @@ sudo apt-get clean
 # ENTORNO DE ESCRITORIO
 
 # Gnome-shell
-#
-# El esquema, nombre y valor utilizado puede ser obtenido
-# facilmente con el Editor de dconf
+if grep -q "gnome-shell" /usr/share/xsessions/*
+then
+  # El esquema, nombre y valor utilizado puede ser obtenido
+  # facilmente con el Editor de dconf
 
-# Fondo de pantalla y la imagen en la pantalla de bloqueo
-sudo mkdir -p /usr/share/backgrounds/ucr-gnome/
-sudo cp "$BASEDIR"/ubuntu-16.04-ucr-background.jpg /usr/share/backgrounds/ucr-gnome/
+  # Fondo de pantalla y la imagen en la pantalla de bloqueo
+  sudo mkdir -p /usr/share/backgrounds/ucr-gnome/
+  sudo cp "$BASEDIR"/ubuntu-16.04-ucr-background.jpg /usr/share/backgrounds/ucr-gnome/
 
-# Plugins de Gnome-shell
-#
-# Como instalar una extension desde la linea de comandos:
-#  http://bernaerts.dyndns.org/linux/76-gnome/283-gnome-shell-install-extension-command-line-script
-sudo wget -O TopIcons@phocean.net.shell-extension.zip "https://extensions.gnome.org/download-extension/TopIcons@phocean.net.shell-extension.zip?version_tag=6608"
-sudo unzip TopIcons@phocean.net.shell-extension.zip -d /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
-sudo chmod -R 755 /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
-sudo rm TopIcons@phocean.net.shell-extension.zip
+  # Plugins de Gnome-shell
+  #
+  # Como instalar una extension desde la linea de comandos:
+  #  http://bernaerts.dyndns.org/linux/76-gnome/283-gnome-shell-install-extension-command-line-script
+  sudo wget -O TopIcons@phocean.net.shell-extension.zip "https://extensions.gnome.org/download-extension/TopIcons@phocean.net.shell-extension.zip?version_tag=6608"
+  sudo unzip TopIcons@phocean.net.shell-extension.zip -d /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
+  sudo chmod -R 755 /usr/share/gnome-shell/extensions/TopIcons@phocean.net/
+  sudo rm TopIcons@phocean.net.shell-extension.zip
 
-sudo wget -O mediaplayer@patapon.info.v57.shell-extension.zip "https://extensions.gnome.org/download-extension/mediaplayer@patapon.info.shell-extension.zip?version_tag=7152"
-sudo unzip mediaplayer@patapon.info.v57.shell-extension.zip -d /usr/share/gnome-shell/extensions/mediaplayer@patapon.info/
-sudo chmod -R 755 /usr/share/gnome-shell/extensions/mediaplayer@patapon.info/
-sudo rm mediaplayer@patapon.info.v57.shell-extension.zip
+  sudo wget -O mediaplayer@patapon.info.v57.shell-extension.zip "https://extensions.gnome.org/download-extension/mediaplayer@patapon.info.shell-extension.zip?version_tag=7152"
+  sudo unzip mediaplayer@patapon.info.v57.shell-extension.zip -d /usr/share/gnome-shell/extensions/mediaplayer@patapon.info/
+  sudo chmod -R 755 /usr/share/gnome-shell/extensions/mediaplayer@patapon.info/
+  sudo rm mediaplayer@patapon.info.v57.shell-extension.zip
 
-# Copia esquema que sobrescribe configuracion de Gnome-shell y lo compila
-sudo cp "$BASEDIR"/30_ucr-gnome-default-settings.gschema.override /usr/share/glib-2.0/schemas/
-sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
+  # Copia esquema que sobrescribe configuracion de Gnome-shell y lo compila
+  sudo cp "$BASEDIR"/30_ucr-gnome-default-settings.gschema.override /usr/share/glib-2.0/schemas/
+  sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 
-# Reinicia todos los valores redefinidos en archivo override para la sesion actual
-# Si no existe una sesion X11 falla y no hace nada
-gsettings reset org.gnome.desktop.background picture-uri
-gsettings reset org.gnome.desktop.screensaver picture-uri
-gsettings reset org.gnome.desktop.input-sources sources
-gsettings reset org.gnome.desktop.interface clock-format
-gsettings reset org.gnome.desktop.interface clock-show-date
-gsettings reset org.gnome.desktop.interface gtk-theme
-gsettings reset org.gnome.desktop.interface icon-theme
-gsettings reset org.gnome.desktop.wm.preferences button-layout
-gsettings reset org.gnome.shell enabled-extensions
-#gsettings reset org.gnome.shell.extensions.topicons icon-opacity
-#gsettings reset org.gnome.shell.extensions.topicons icon-saturation
-#gsettings reset org.gnome.shell.extensions.topicons tray-order
-gsettings reset org.gnome.shell.extensions.user-theme name
-gsettings reset org.gnome.shell favorite-apps
-gsettings reset org.gnome.nautilus.preferences show-directories-first
+  # Reinicia todos los valores redefinidos en archivo override para la sesion actual
+  # Si no existe una sesion X11 falla y no hace nada
+  gsettings reset org.gnome.desktop.background picture-uri
+  gsettings reset org.gnome.desktop.screensaver picture-uri
+  gsettings reset org.gnome.desktop.input-sources sources
+  gsettings reset org.gnome.desktop.interface clock-format
+  gsettings reset org.gnome.desktop.interface clock-show-date
+  gsettings reset org.gnome.desktop.interface gtk-theme
+  gsettings reset org.gnome.desktop.interface icon-theme
+  gsettings reset org.gnome.desktop.wm.preferences button-layout
+  gsettings reset org.gnome.shell enabled-extensions
+  #gsettings reset org.gnome.shell.extensions.topicons icon-opacity
+  #gsettings reset org.gnome.shell.extensions.topicons icon-saturation
+  #gsettings reset org.gnome.shell.extensions.topicons tray-order
+  gsettings reset org.gnome.shell.extensions.user-theme name
+  gsettings reset org.gnome.shell favorite-apps
+  gsettings reset org.gnome.nautilus.preferences show-directories-first
 
-echo "*** *** *** *** *** ***"
-echo ""
-echo "AVISO: Si tiene una sesión gráfica abierta, deberá reiniciarla."
-echo ""
-echo "*** *** *** *** *** ***"
+  echo "*** *** *** *** *** ***"
+  echo ""
+  echo "AVISO: Si tiene una sesión gráfica abierta, deberá reiniciarla."
+  echo ""
+  echo "*** *** *** *** *** ***"
 
+fi
 
 # CONFIGURACION GENERAL
 
