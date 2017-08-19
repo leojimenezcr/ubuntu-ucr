@@ -232,22 +232,40 @@ sudo apt-get clean
 
 # ENTORNO DE ESCRITORIO
 
+# El esquema, nombre y valor utilizado puede ser obtenido
+# facilmente con el Editor de dconf (apt install dconf-editor)
+
+# Fondo de pantalla y la imagen en la pantalla de bloqueo
+sudo mkdir -p /usr/share/backgrounds/ucr/
+sudo cp "$BASEDIR"/ubuntu-16.04-ucr-background.jpg /usr/share/backgrounds/ucr/
+
 # Unity
 if grep -q "Unity" /usr/share/xsessions/*
 then
- #todo: configuracion para Unity
+  # Copia esquema que sobrescribe configuracion de Unity y lo compila
+  sudo cp "$BASEDIR"/30_ucr-ubuntu-settings.gschema.override /usr/share/glib-2.0/schemas/
+  sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
+
+  # Reinicia todos los valores redefinidos en archivo override para la sesion actual
+  # Si no existe una sesion X11 falla y no hace nada
+  gsettings reset com.canonical.indicator.datetime show-date
+  gsettings reset com.canonical.indicator.datetime time-format
+  gsettings reset com.canonical.Unity.Launcher favorites
+  gsettings reset org.gnome.desktop.background picture-uri
+  gsettings reset org.gnome.desktop.input-sources sources
+  gsettings reset org.gnome.desktop.interface gtk-theme
+  gsettings reset org.gnome.desktop.interface icon-theme
+
+  echo "*** *** *** *** *** ***"
+  echo ""
+  echo "AVISO: Si tiene una sesión gráfica abierta, deberá reiniciarla."
+  echo ""
+  echo "*** *** *** *** *** ***"
 fi
 
 # Gnome-shell
 if grep -q "gnome-shell" /usr/share/xsessions/*
 then
-  # El esquema, nombre y valor utilizado puede ser obtenido
-  # facilmente con el Editor de dconf
-
-  # Fondo de pantalla y la imagen en la pantalla de bloqueo
-  sudo mkdir -p /usr/share/backgrounds/ucr/
-  sudo cp "$BASEDIR"/ubuntu-16.04-ucr-background.jpg /usr/share/backgrounds/ucr/
-
   # Plugins de Gnome-shell
   #
   # Como instalar una extension desde la linea de comandos:
@@ -291,6 +309,7 @@ then
   echo "*** *** *** *** *** ***"
 fi
 
+
 # CONFIGURACION GENERAL
 
 # Desabilita apport para no mostrar molestos mensajes de fallos
@@ -329,7 +348,4 @@ sudo cp $autostart /etc/skel/.config/autostart/
 sudo sed -i \
 -e 's/^#force_color_prompt=yes/force_color_prompt=yes/' \
 /etc/skel/.bashrc
-
-# Se aplica al usuario actual
-cp -rf /etc/skel/.* /etc/skel/* ~/
 
