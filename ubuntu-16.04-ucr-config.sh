@@ -232,6 +232,12 @@ sudo apt-get clean
 
 # ENTORNO DE ESCRITORIO
 
+# Unity
+if grep -q "Unity" /usr/share/xsessions/*
+then
+ #todo: configuracion para Unity
+fi
+
 # Gnome-shell
 if grep -q "gnome-shell" /usr/share/xsessions/*
 then
@@ -283,7 +289,6 @@ then
   echo "AVISO: Si tiene una sesión gráfica abierta, deberá reiniciarla."
   echo ""
   echo "*** *** *** *** *** ***"
-
 fi
 
 # CONFIGURACION GENERAL
