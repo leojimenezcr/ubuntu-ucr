@@ -19,4 +19,4 @@ icon-theme = 'Numix-Circle'
 background = '/usr/share/backgrounds/ucr/ubuntu-16.04-ucr-background.jpg'
 icon-theme-name = 'Numix-Circle'
 theme-name = 'Arc-Darker'
-
+background-color = '#005DA4'
