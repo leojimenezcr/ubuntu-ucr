@@ -242,6 +242,12 @@ sudo cp "$BASEDIR"/ubuntu-16.04-ucr-background.jpg /usr/share/backgrounds/ucr/
 # Unity
 if grep -q "Unity" /usr/share/xsessions/*
 then
+  # Tema durante arranque
+  sudo cp -r "$BASEDIR"/plymouth/ubuntu-ucr/ /usr/share/plymouth/themes/
+  sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/ubuntu-ucr/ubuntu-ucr.plymouth 100
+  sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/ubuntu-ucr/ubuntu-ucr.plymouth
+  sudo update-grub
+
   # Copia esquema que sobrescribe configuracion de Unity y lo compila
   sudo cp "$BASEDIR"/30_ucr-ubuntu-settings.gschema.override /usr/share/glib-2.0/schemas/
   sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
