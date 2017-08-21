@@ -19,7 +19,7 @@ Criterios para la personalización
 - No intenta parecerse a ningún otro sistema, si no que ofrece las innovadoras características de los entornos libres.
 - Se modifica el aspecto gráfico para mostrar una alternativa atractiva pero sin sacrificar la usabilidad del sistema. Todo tema o set de íconos debe ser de fácil visualización, sin que confunda al usuario.
 - Se enfoca en el usuario final o en los usuarios que inician en GNU/Linux. Los usuarios avanzados sabrán buscar distribuciones alternativas, instalar sus herramientas o personalizar los entornos de escritorio a su manera.
-- Los entornos a utilizar son: Gnome-shell, el próximo entorno predeterminado de Ubuntu y MATE, ideal para equipos antiguos.
+- Los entornos a utilizar son: Unity (Ubuntu 16.04), Gnome-shell (Ubuntu 18.04+) y MATE, ideal para equipos antiguos.
 
 Capturas de pantalla
 ---------------------------
