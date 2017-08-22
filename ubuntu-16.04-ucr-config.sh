@@ -258,6 +258,9 @@ then
   gsettings reset com.canonical.indicator.datetime time-format
   gsettings reset com.canonical.Unity.Launcher favorites
   gsettings reset org.gnome.desktop.background picture-uri
+  gsettings reset org.gnome.desktop.background color-shading-type
+  gsettings reset org.gnome.desktop.background primary-color
+  gsettings reset org.gnome.desktop.background secondary-color
   gsettings reset org.gnome.desktop.input-sources sources
   gsettings reset org.gnome.desktop.interface gtk-theme
   gsettings reset org.gnome.desktop.interface icon-theme

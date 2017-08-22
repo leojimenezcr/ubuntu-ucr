@@ -7,6 +7,9 @@ favorites = ['application://org.gnome.Nautilus.desktop', 'application://firefox.
 
 [org.gnome.desktop.background]
 picture-uri = 'file:///usr/share/backgrounds/ucr/ubuntu-16.04-ucr-background.jpg'
+color-shading-type = 'horizontal'
+primary-color = '#00005d5da4a4'
+secondary-color = '#0000c0c0f3f3'
 
 [org.gnome.desktop.input-sources]
 sources = [('xkb', 'latam'), ('xkb', 'es'), ('xkb', 'us'), ('xkb', 'us+alt-intl')]
