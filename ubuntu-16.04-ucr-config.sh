@@ -246,6 +246,11 @@ then
   sudo cp -r "$BASEDIR"/plymouth/ubuntu-ucr/ /usr/share/plymouth/themes/
   sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/ubuntu-ucr/ubuntu-ucr.plymouth 100
   sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/ubuntu-ucr/ubuntu-ucr.plymouth
+
+  sudo cp -r "$BASEDIR"/plymouth/ubuntu-ucr-text/ /usr/share/plymouth/themes/
+  sudo update-alternatives --install /usr/share/plymouth/themes/text.plymouth text.plymouth /usr/share/plymouth/themes/ubuntu-ucr-text/ubuntu-ucr-text.plymouth 100
+  sudo update-alternatives --set text.plymouth /usr/share/plymouth/themes/ubuntu-ucr-text/ubuntu-ucr-text.plymouth
+
   sudo update-grub
 
   # Copia esquema que sobrescribe configuracion de Unity y lo compila
