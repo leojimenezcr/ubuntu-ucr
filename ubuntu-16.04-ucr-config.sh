@@ -222,12 +222,16 @@ purgepackages="$purgepackages evolution evolution-plugins evolution-common libev
 autostart="$autostart /usr/share/applications/caffeine.desktop /usr/share/applications/caffeine-indicator.desktop"
 
 # Actualizacion del sistema e instalacion de los paquetes indicados
+sudo cp "$BASEDIR"/sources-mirror-ucr.list /etc/apt/sources.list.d/ # temporal, en caso que no este configurado
 sudo apt-get update
 sudo apt-get -y dist-upgrade
 sudo apt-get -y install $packages
 sudo apt-get -y purge $purgepackages
 sudo apt-get -y autoremove
 sudo apt-get clean
+
+sudo rm /etc/apt/sources.list.d/sources-mirror-ucr.list # se elimina repositorio temporal
+sudo apt-get update
 
 
 # ENTORNO DE ESCRITORIO
