@@ -240,7 +240,7 @@ sudo apt-get update
 # El esquema, nombre y valor utilizado puede ser obtenido
 # facilmente con el Editor de dconf (apt install dconf-editor)
 
-# Fondo de pantalla y la imagen en la pantalla de bloqueo
+# Fondo de pantalla y la imagen en la pantalla de autenticacion
 sudo mkdir -p /usr/share/backgrounds/ucr/
 sudo cp "$BASEDIR"/ubuntu-16.04-ucr-background.jpg /usr/share/backgrounds/ucr/
 
@@ -326,6 +326,30 @@ then
   echo "AVISO: Si tiene una sesión gráfica abierta, deberá reiniciarla."
   echo ""
   echo "*** *** *** *** *** ***"
+fi
+
+# MATE
+if grep -q "MATE" /usr/share/xsessions/*
+then
+  # Tema durante arranque
+  sudo cp -r "$BASEDIR"/plymouth/ubuntu-ucr/ /usr/share/plymouth/themes/
+  sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth /usr/share/plymouth/themes/ubuntu-ucr/ubuntu-ucr.plymouth 100
+  sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/ubuntu-ucr/ubuntu-ucr.plymouth
+
+  sudo cp -r "$BASEDIR"/plymouth/ubuntu-ucr-text/ /usr/share/plymouth/themes/
+  sudo update-alternatives --install /usr/share/plymouth/themes/text.plymouth text.plymouth /usr/share/plymouth/themes/ubuntu-ucr-text/ubuntu-ucr-text.plymouth 100
+  sudo update-alternatives --set text.plymouth /usr/share/plymouth/themes/ubuntu-ucr-text/ubuntu-ucr-text.plymouth
+
+  sudo update-grub
+
+  # Copia esquema que sobrescribe configuracion de MATE y lo compila
+  sudo cp "$BASEDIR"/30_ucr-mate-settings.gschema.override /usr/share/glib-2.0/schemas/
+  sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
+
+  # Configura pantalla de autenticacion
+  sudo sh -c 'echo "[greeter]
+background = /usr/share/backgrounds/ucr/ubuntu-16.04-ucr-background.jpg
+icon-theme-name = Numix-Circle" > /etc/lightdm/lightdm-gtk-greeter.conf'
 fi
 
 
