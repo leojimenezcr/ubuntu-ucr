@@ -231,6 +231,7 @@ sudo apt-get -y autoremove
 sudo apt-get clean
 
 sudo rm /etc/apt/sources.list.d/sources-mirror-ucr.list # se elimina repositorio temporal
+sudo rm /etc/apt/sources.list.d/sources-mirror-ucr.list.save
 sudo apt-get update
 
 
