@@ -38,13 +38,11 @@ Criterios para la personalización
 
 Capturas de pantalla
 ---------------------------
-![Ubuntu Gnome 16.04 UCR](https://raw.githubusercontent.com/leojimenezcr/ubuntu-ucr/master/screenshot-1.png)
+![Ubuntu 16.04 UCR](https://raw.githubusercontent.com/leojimenezcr/ubuntu-ucr/master/screenshot-1.png)
 
-![Ubuntu Gnome 16.04 UCR](https://raw.githubusercontent.com/leojimenezcr/ubuntu-ucr/master/screenshot-2.png)
+![Ubuntu 16.04 UCR](https://raw.githubusercontent.com/leojimenezcr/ubuntu-ucr/master/screenshot-2.png)
 
-![Ubuntu Gnome 16.04 UCR](https://raw.githubusercontent.com/leojimenezcr/ubuntu-ucr/master/screenshot-3.png)
-
-![Ubuntu Gnome 16.04 UCR](https://raw.githubusercontent.com/leojimenezcr/ubuntu-ucr/master/screenshot-4.png)
+![Ubuntu 16.04 UCR](https://raw.githubusercontent.com/leojimenezcr/ubuntu-ucr/master/screenshot-3.png)
 
 ¿Cómo ejecutar el script?
 ---------------------------
