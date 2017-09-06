@@ -13,6 +13,8 @@ Estas son algunas de sus características:
 - Extras de terceros preinstalados, como tipografías Arial, Times New Roman, etc., plugins Oracle Java, Adobe Flash, o codecs multimedia.
 - Software adicional como Gimp, Google Chrome, Spotify o la herramienta de configuración de AURI y Eduroam.
 
+Trabajo conjunto
+---------------------------
 
 Todas las modificaciones se han escrito en un script bash para poder recrear la personalización fácilmente, tanto en una instalación en limpio como para generar un ISO para la distribución.
 
