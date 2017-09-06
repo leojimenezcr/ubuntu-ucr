@@ -1,9 +1,22 @@
 Ubuntu personalizado para la Universidad de Costa Rica
 =================================
 
-Este proyecto toma como base la úlitma versión LTS de Ubuntu y lo configura de manera que incluya herramientas de uso común en la Universidad de Costa Rica.
+**Ubuntu UCR** es una propuesta por parte de la *Comunidad de Software Libre de la Universidad de Costa Rica* para ser utilizada en la Institución.
+
+Consiste en una personalización de Ubuntu, la popular distribución GNU/Linux. Este es un sistema operativo innovador y de fácil manejo, además es libre, lo que significa que se puede utilizar con cualquier fin, se puede copiar y distribuir sin restrcción e incluso se puede modificar para ser adaptado a diversas necesidades. La mayoría del software incluido también es de licencia libre.
+
+Estas son algunas de sus características:
+
+- Se basa en la versión de Ubuntu con soporte extendido, lo que ofrece mayor estabilidad y gran soporte técnico por parte de la comunidad.
+- Tema gráfico moderno y atractivo.
+- Versiones actualizadas del software base, como LibreOffice, Mozilla Firefox, Shotwell, Rhythmbox y otros.
+- Extras de terceros preinstalados, como tipografías Arial, Times New Roman, etc., plugins Oracle Java, Adobe Flash, o codecs multimedia.
+- Software adicional como Gimp, Google Chrome, Spotify o la herramienta de configuración de AURI y Eduroam.
+
 
 Todas las modificaciones se han escrito en un script bash para poder recrear la personalización fácilmente, tanto en una instalación en limpio como para generar un ISO para la distribución.
+
+Si usted desea reportar problemas, hacer sugerencias o aportar mejoras, puede hacerlo a través de esta plataforma.
 
 Se toma como base Ubuntu por las siguientes razones:
 
