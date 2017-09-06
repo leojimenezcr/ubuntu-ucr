@@ -14,15 +14,15 @@ Toma una imagen de Ubuntu, la personaliza de acuerdo al script de configuración
   exit 1
 fi
 
-## variables
+## VARIABLES
 # ruta al archivo ISO original
 ISOPATH=$1
 
-# ruta en dónde se copiará el ISO personalizado
+# ruta en donde se copiara el ISO personalizado
 if [[ -n $2 ]]
 then
   WORKINGDIR=$2
-# si no se indica un destino, se guardará en el directorio actual
+# si no se indica un destino, se guardara en el directorio actual
 else
   SCRIPTPATH=$(readlink -f $0)
   WORKINGDIR=$(dirname "$SCRIPTPATH")
