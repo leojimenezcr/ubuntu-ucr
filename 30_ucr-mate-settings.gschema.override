@@ -16,7 +16,7 @@ gtk-theme='Arc-Darker'
 theme='Arc-Darker'
 
 [org.mate.pluma]
-color-sheme='Classic'
+color-scheme='Classic'
 display-line-numbers=false
 display-right-margin=false
 highlight-current-line=false
