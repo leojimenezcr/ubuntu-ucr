@@ -12,17 +12,19 @@
 #
 # Github: https://github.com/leojimenezcr/ubuntu-ucr
 
-
 # MENSAJE DE ADVERTENCIA
-echo ""
-echo "Este script podría sobreescribir la configuración actual, se recomienda ejecutarlo en una instalación limpia. Si este no es un sistema recién instalado o no ha realizado un respaldo, cancele la ejecución."
-echo ""
-read -p "¿Desea continuar? [s/N] " -r
-if [[ ! $REPLY =~ ^[SsYy]$ ]]
+# pregunta solo si el usuario no puso explicitamente la opcion -y
+if [[ $1 != "-y" ]]
 then
-	exit
+  echo ""
+  echo "Este script podría sobreescribir la configuración actual, se recomienda ejecutarlo en una instalación limpia. Si este no es un sistema recién instalado o no ha realizado un respaldo, cancele la ejecución."
+  echo ""
+  read -p "¿Desea continuar? [s/N] " -r
+  if [[ ! $REPLY =~ ^[SsYy]$ ]]
+  then
+    exit
+  fi
 fi
-
 
 # VARIABLES
 
