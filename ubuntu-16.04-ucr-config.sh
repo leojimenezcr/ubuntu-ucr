@@ -108,7 +108,7 @@ sudo sed -i \
 -e 's/Unattended-Upgrade::Allowed-Origins {/Unattended-Upgrade::Allowed-Origins {\n\t"LP-PPA-libreoffice-libreoffice-5-3:${distro_codename}";/' \
 /etc/apt/apt.conf.d/50unattended-upgrades
 
-packages="$packages libreoffice libreoffice-style-sifr"
+packages="$packages libreoffice libreoffice-l10n-en-za libreoffice-l10n-en-gb libreoffice-help-en-gb libreoffice-style-sifr"
 
 # Google Chrome o Chromium
 #
@@ -219,7 +219,7 @@ packages="$packages spotify-client"
 # - Thunderbird, al ser multiplataforma, su perfil se puede migrar facilmente
 # - unattended-upgrades para actualizaciones automaticas
 # - caffeine para inibir el descansador de pantalla, ideal para una exposicion
-packages="$packages thunderbird thunderbird-locale-es unattended-upgrades caffeine"
+packages="$packages thunderbird thunderbird-locale-es thunderbird-locale-es-ar thunderbird-locale-en-gb unattended-upgrades caffeine"
 purgepackages="$purgepackages evolution evolution-plugins evolution-common libevolution evolution-data-server-online-accounts"
 autostart="$autostart /usr/share/applications/caffeine.desktop /usr/share/applications/caffeine-indicator.desktop"
 
