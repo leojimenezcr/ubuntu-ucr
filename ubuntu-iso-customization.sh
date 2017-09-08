@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+## VARIABLES
 # se espera al menos una variable
 if [[ $# < 1 ]]
 then
@@ -13,9 +15,8 @@ Toma una imagen de Ubuntu, la personaliza de acuerdo al script de configuración
   exit 1
 fi
 
-## VARIABLES
-# ruta al archivo ISO original
-ISOPATH=$1
+# ruta absoluta al archivo ISO original
+ISOPATH=$(cd "$(dirname "$1")"; pwd)/$(basename "$1")
 
 # directorio del script
 SCRIPTPATH=$(readlink -f $0)
