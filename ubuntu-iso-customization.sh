@@ -94,7 +94,7 @@ sudo sed -i '/casper/d' $EXTRACT/casper/filesystem.manifest-desktop
 
 # Comprime el sistema de archivos recien editado
 sudo mksquashfs $EDIT $EXTRACT/casper/filesystem.squashfs -b 1048576
-printf $(sudo du -sx --block-size=1 edit | cut -f1) | sudo tee $EXTRACT/casper/filesystem.size
+printf $(sudo du -sx --block-size=1 $EDIT | cut -f1) | sudo tee $EXTRACT/casper/filesystem.size
 cd $EXTRACT
 sudo rm md5sum.txt
 find -type f -print0 | sudo xargs -0 md5sum | grep -v isolinux/boot.cat | sudo tee md5sum.txt
