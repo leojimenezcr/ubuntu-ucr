@@ -1,5 +1,4 @@
-Ubuntu personalizado para la Universidad de Costa Rica
-=================================
+# Ubuntu personalizado para la Universidad de Costa Rica
 
 **Ubuntu UCR** es una propuesta por parte de la *Comunidad de Software Libre de la Universidad de Costa Rica* para ser utilizada en la Institución.
 
@@ -14,8 +13,23 @@ Estas son algunas de sus características:
 - Software adicional como Gimp, Google Chrome, Spotify o la herramienta de configuración de AURI y Eduroam.
 - Actualizaciones automáticas del sistema operativo y de todos los programas instalados. Estas son silenciosas y no requieren intervención del usuario.
 
-Trabajo conjunto
----------------------------
+
+## Capturas de pantalla
+
+![Ubuntu 16.04 UCR](https://raw.githubusercontent.com/leojimenezcr/ubuntu-ucr/master/screenshot-1.png)
+
+![Ubuntu 16.04 UCR](https://raw.githubusercontent.com/leojimenezcr/ubuntu-ucr/master/screenshot-2.png)
+
+![Ubuntu 16.04 UCR](https://raw.githubusercontent.com/leojimenezcr/ubuntu-ucr/master/screenshot-3.png)
+
+
+## Descarga
+
+Imagenes de **Ubuntu UCR**, listas para instalar, pueden ser descargadas desde nuestro servidor de espejos:
+http://espejos.ucr.ac.cr/cslucr/
+
+
+## Trabajo conjunto
 
 Todas las modificaciones se han escrito en un script bash para poder recrear la personalización fácilmente, tanto en una instalación en limpio como para generar un ISO para la distribución.
 
@@ -27,8 +41,7 @@ Se toma como base Ubuntu por las siguientes razones:
 - Fuerte enfoce en el usuario final.
 - Al tener una versión de soporte extendido, ofrece mucha estabilidad.
 
-Criterios para la personalización
----------------------------
+### Criterios para la personalización
 
 - Se incluye únicamente software estable, no en desarrollo, no experimental
 - Las modificaciones al entorno de escritorio son mínimas, después de todo existe un equipo enfocado en experiencia de usuario (UX) detrás de su desarrollo, con criterios suficientes para diseñar el entorno de esa manera.
@@ -37,16 +50,8 @@ Criterios para la personalización
 - Se enfoca en el usuario final o en los usuarios que inician en GNU/Linux. Los usuarios avanzados sabrán buscar distribuciones alternativas, instalar sus herramientas o personalizar los entornos de escritorio a su manera.
 - Los entornos a utilizar son: Unity (Ubuntu 16.04), Gnome-shell (Ubuntu 18.04+) y MATE, ideal para equipos antiguos.
 
-Capturas de pantalla
----------------------------
-![Ubuntu 16.04 UCR](https://raw.githubusercontent.com/leojimenezcr/ubuntu-ucr/master/screenshot-1.png)
 
-![Ubuntu 16.04 UCR](https://raw.githubusercontent.com/leojimenezcr/ubuntu-ucr/master/screenshot-2.png)
-
-![Ubuntu 16.04 UCR](https://raw.githubusercontent.com/leojimenezcr/ubuntu-ucr/master/screenshot-3.png)
-
-¿Cómo ejecutar el script?
----------------------------
+## ¿Cómo ejecutar el script?
 
 1. Realice una instalación en limpio de Ubuntu 16.04 LTS
 2. Conéctese a Internet
@@ -56,7 +61,16 @@ Capturas de pantalla
 6. De permisos de ejecución al script: `chmod +x ubuntu-16.04-ucr-config.sh`
 7. Ejecútelo: `./ubuntu-16.04-ucr-config.sh`
 
+### ¿Cómo generar una imagen ISO?
 
-Comunidad de Software Libre de la Universidad de Costa Rica
+El script *ubuntu-iso-customization.sh* toma una imagen ISO de Ubuntu y genera un ISO personalizado. El mismo descarga y ejecuta el script de configuración.
+1. Instale las herramientas requeridas: `sudo apt install squashfs-tools xorriso`
+2. Descargue un ISO soportado por este proyecto. Actualmente Ubuntu 16.04 con Unity, Gnome-Shell o MATE.
+3. Descargue el script *ubuntu-iso-customization.sh*: `wget https://github.com/leojimenezcr/ubuntu-ucr/raw/master/ubuntu-iso-customization.sh`
+3. De permisos de ejecución al script: `chmod +x ubuntu-iso-customization.sh`
+4. Ejecútelo indicando la ruta al archivo ISO: `./ubuntu-iso-customization.sh ubuntu-16.04.x-desktop-arch.iso`
 
-http://softwarelibre.ucr.ac.cr
+
+*Comunidad de Software Libre de la Universidad de Costa Rica*
+
+*http://softwarelibre.ucr.ac.cr*
