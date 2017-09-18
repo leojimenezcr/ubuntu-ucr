@@ -2,21 +2,67 @@
 gtk-theme='Arc-Darker'
 icon-theme='Numix-Circle'
 
+
+
+[org.gnome.desktop.wm.preferences]
+theme='Arc-Darker'
+
+[org.mate.desktop.interface]
+gtk-theme='Arc-Darker'
+icon-theme='Numix-Circle'
+
+[org.mate.interface]
+icon-theme='Numix-Circle'
+gtk-theme='Arc-Darker'
+gtk-decoration-layout='menu:minimize,maximize,close'
+font-name='Ubuntu 11'
+document-font-name='Ubuntu 11'
+monospace-font-name='Ubuntu Mono 13'
+
 [org.gnome.desktop.wm.preferences]
 theme='Arc-Darker'
 
 [org.mate.background]
 picture-filename='/usr/share/backgrounds/ucr/ubuntu-16.04-ucr-background.jpg'
 
-[org.mate.interface]
-icon-theme='Numix-Circle'
-gtk-theme='Arc-Darker'
-
-[org.mate.Marco.general]
+[org.mate.marco.general]
 theme='Arc-Darker'
 
 [org.mate.pluma]
 color-scheme='Classic'
-display-line-numbers=false
+display-line-numbers=true
 display-right-margin=false
 highlight-current-line=false
+
+[org.mate.applications-at-mobility]
+exec='onboard'
+
+[org.mate.applications-at-visual]
+exec='orca'
+
+[org.mate.applications-office.calendar]
+exec='thunderbird'
+
+[org.mate.applications-office.tasks]
+exec='thunderbird'
+
+[org.mate.disk-usage-analyzer.ui]
+statusbar-visible=true
+
+[org.mate.font-rendering]
+antialiasing = 'rgba'
+hinting = 'slight'
+
+[org.mate.panel]
+default-layout='ubuntu-mate'
+show-program-list=true
+
+[org.mate.peripherals-mouse]
+cursor-theme='DMZ-White'
+
+[org.mate.stickynotes]
+default-font='Ubuntu 10'
+
+[org.mate.peripherals-touchpad]
+disable-while-typing=true
+tap-to-click=true
