@@ -15,6 +15,11 @@ Toma una imagen de Ubuntu, la personaliza de acuerdo al script de configuración
   exit 1
 fi
 
+mkdir ubuntu-ucr-master/
+cp -ar plymouth/ *.override *.list ubuntu-16.04-ucr-* ubuntu-ucr-master/
+zip -r master.zip ubuntu-ucr-master
+rm -rf ubuntu-ucr-master/
+
 # ruta absoluta al archivo ISO original
 ISOPATH=$(cd "$(dirname "$1")"; pwd)/$(basename "$1")
 
@@ -46,7 +51,7 @@ sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ $EXTRACT
 sudo dd if=$ISOPATH bs=512 count=1 of=$EXTRACT/isolinux/isohdpfx.bin
 sudo unsquashfs -d $EDIT mnt/casper/filesystem.squashfs
 sudo umount mnt
-
+sudo mv $SCRIPTDIR/master.zip $EDIT/root
 sudo cp /etc/resolv.conf /etc/hosts $EDIT/etc/
 sudo mount --bind /dev/ $EDIT/dev/
 
@@ -65,7 +70,6 @@ cd ~
 
 # Descarga y ejecuta script de personalizacion ubuntu-ucr.
 # Puede omitir el script y en su lugar realizar una personalizacion manual
-wget https://github.com/leojimenezcr/ubuntu-ucr/archive/master.zip
 unzip master.zip && rm master.zip
 bash ubuntu-ucr-master/ubuntu-16.04-ucr-config.sh -y
 rm -r ubuntu-ucr-master
