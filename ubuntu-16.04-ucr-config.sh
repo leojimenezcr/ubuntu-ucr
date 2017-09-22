@@ -346,8 +346,10 @@ then
 
   # Copia esquema que sobrescribe configuracion de MATE y lo compila
   sudo cp "$BASEDIR"/gschema/30_ucr-mate-settings.gschema.override /usr/share/glib-2.0/schemas/
+  sudo cp "$BASEDIR"/gschema/ubuntu-mate.gschema.override /usr/share/glib-2.0/schemas/
+  sudo rm /usr/share/glib-2.0/schemas/mate-ubuntu.gschema.override
   sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
-
+  
   # Configura pantalla de autenticacion
   sudo sh -c 'echo "[greeter]
 background = /usr/share/backgrounds/ucr/ubuntu-16.04-ucr-background.jpg
