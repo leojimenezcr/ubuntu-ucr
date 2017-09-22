@@ -64,7 +64,7 @@ EDIT=${ISONAME%.*}-squashfs
 if [ -z $ZIP ]; then
     if [ $DEVELOPMENT ]; then
         mkdir ubuntu-ucr-master/
-        cp -ar plymouth/ *.override *.list ubuntu-16.04-ucr-* ubuntu-ucr-master/
+        cp -ar plymouth/ gschema/ *.list ubuntu-16.04-ucr-* ubuntu-ucr-master/
         zip -r $SCRIPTDIR/master.zip ubuntu-ucr-master
         rm -rf ubuntu-ucr-master/
     else
@@ -141,6 +141,7 @@ sudo xorriso -as mkisofs -isohybrid-mbr isolinux/isohdpfx.bin \
 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot \
 -isohybrid-gpt-basdat -o ../$CUSTOMISONAME .
 
+echo "Generando sumas de verificación";
 cd ..
 md5sum $CUSTOMISONAME >> MD5SUMS
 sha1sum $CUSTOMISONAME >> SHA1SUMS
