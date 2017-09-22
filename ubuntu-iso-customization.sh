@@ -1,24 +1,45 @@
 #!/bin/bash
 
-
-## VARIABLES
-# se espera al menos una variable
-if [[ $# < 1 ]]
-then
-  echo "Modo de empleo: $0 IMAGEN.ISO
+# Mensaje de ayuda en el uso de la aplicación.
+function myhelp(){
+  echo "Modo de empleo: $0 <opciones> IMAGEN.ISO 
 
 Donde:
   IMAGEN.ISO es la ruta al archivo ISO original
 
-Toma una imagen de Ubuntu, la personaliza de acuerdo al script de configuración y genera el archivo ISO personalizado para ser distribuido."
+Opciones:
 
+  -d modo desarrollo, crea un zip apartir de la carpeta actual
+  -z archivo.zip el archivo zip como repositorio
+  -h muestra esta ayuda
+
+Toma una imagen de Ubuntu, la personaliza de acuerdo al script de configuración y genera el archivo ISO personalizado para ser distribuido.";
+}
+
+# Captando parámetros
+# Is in development environment ?
+DEVELOPMENT=false
+ZIP=""
+
+while getopts z:hd option
+do
+ case "${option}"
+ in
+ z) ZIP=${OPTARG};;
+ d) DEVELOPMENT=true;;
+ h) myhelp
+    exit 0 ;;
+ esac
+done
+
+shift $((OPTIND -1))
+
+if [ -z $1 ]; then
+  myhelp
   exit 1
 fi
 
-mkdir ubuntu-ucr-master/
-cp -ar plymouth/ *.override *.list ubuntu-16.04-ucr-* ubuntu-ucr-master/
-zip -r master.zip ubuntu-ucr-master
-rm -rf ubuntu-ucr-master/
+## VARIABLES
 
 # ruta absoluta al archivo ISO original
 ISOPATH=$(cd "$(dirname "$1")"; pwd)/$(basename "$1")
@@ -38,8 +59,20 @@ EXTRACT=${ISONAME%.*}-extract
 # directorio donde editar sistema de archivos
 EDIT=${ISONAME%.*}-squashfs
 
-
 ## PERSONALIZACION
+
+if [ -z $ZIP ]; then
+    if [ $DEVELOPMENT ]; then
+        mkdir ubuntu-ucr-master/
+        cp -ar plymouth/ *.override *.list ubuntu-16.04-ucr-* ubuntu-ucr-master/
+        zip -r $SCRIPTDIR/master.zip ubuntu-ucr-master
+        rm -rf ubuntu-ucr-master/
+    else
+        wget -O $SCRIPTDIR/master.zip https://github.com/leojimenezcr/ubuntu-ucr/archive/master.zip
+    fi
+else
+    cp $ZIP master.zip
+fi
 
 echo "Se trabajará en el directorio $(pwd)/ubuntu-iso-customization"
 mkdir ubuntu-iso-customization
