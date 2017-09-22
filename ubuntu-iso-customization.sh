@@ -1,19 +1,45 @@
 #!/bin/bash
 
-
-## VARIABLES
-# se espera al menos una variable
-if [[ $# < 1 ]]
-then
-  echo "Modo de empleo: $0 IMAGEN.ISO
+# Mensaje de ayuda en el uso de la aplicación.
+function myhelp(){
+  echo "Modo de empleo: $0 <opciones> IMAGEN.ISO 
 
 Donde:
   IMAGEN.ISO es la ruta al archivo ISO original
 
-Toma una imagen de Ubuntu, la personaliza de acuerdo al script de configuración y genera el archivo ISO personalizado para ser distribuido."
+Opciones:
 
+  -d modo desarrollo, crea un zip apartir de la carpeta actual
+  -z archivo.zip el archivo zip como repositorio
+  -h muestra esta ayuda
+
+Toma una imagen de Ubuntu, la personaliza de acuerdo al script de configuración y genera el archivo ISO personalizado para ser distribuido.";
+}
+
+# Captando parámetros
+# Is in development environment ?
+DEVELOPMENT=false
+ZIP=""
+
+while getopts z:hd option
+do
+ case "${option}"
+ in
+ z) ZIP=${OPTARG};;
+ d) DEVELOPMENT=true;;
+ h) myhelp
+    exit 0 ;;
+ esac
+done
+
+shift $((OPTIND -1))
+
+if [ -z $1 ]; then
+  myhelp
   exit 1
 fi
+
+## VARIABLES
 
 # ruta absoluta al archivo ISO original
 ISOPATH=$(cd "$(dirname "$1")"; pwd)/$(basename "$1")
@@ -33,8 +59,20 @@ EXTRACT=${ISONAME%.*}-extract
 # directorio donde editar sistema de archivos
 EDIT=${ISONAME%.*}-squashfs
 
-
 ## PERSONALIZACION
+
+if [ -z $ZIP ]; then
+    if [ $DEVELOPMENT ]; then
+        mkdir ubuntu-ucr-master/
+        cp -ar plymouth/ gschema/ *.list ubuntu-16.04-ucr-* ubuntu-ucr-master/
+        zip -r $SCRIPTDIR/master.zip ubuntu-ucr-master
+        rm -rf ubuntu-ucr-master/
+    else
+        wget -O $SCRIPTDIR/master.zip https://github.com/leojimenezcr/ubuntu-ucr/archive/master.zip
+    fi
+else
+    cp $ZIP master.zip
+fi
 
 echo "Se trabajará en el directorio $(pwd)/ubuntu-iso-customization"
 mkdir ubuntu-iso-customization
@@ -46,7 +84,7 @@ sudo rsync --exclude=/casper/filesystem.squashfs -a mnt/ $EXTRACT
 sudo dd if=$ISOPATH bs=512 count=1 of=$EXTRACT/isolinux/isohdpfx.bin
 sudo unsquashfs -d $EDIT mnt/casper/filesystem.squashfs
 sudo umount mnt
-
+sudo mv $SCRIPTDIR/master.zip $EDIT/root
 sudo cp /etc/resolv.conf /etc/hosts $EDIT/etc/
 sudo mount --bind /dev/ $EDIT/dev/
 
@@ -65,7 +103,6 @@ cd ~
 
 # Descarga y ejecuta script de personalizacion ubuntu-ucr.
 # Puede omitir el script y en su lugar realizar una personalizacion manual
-wget https://github.com/leojimenezcr/ubuntu-ucr/archive/master.zip
 unzip master.zip && rm master.zip
 bash ubuntu-ucr-master/ubuntu-16.04-ucr-config.sh -y
 rm -r ubuntu-ucr-master
@@ -104,6 +141,7 @@ sudo xorriso -as mkisofs -isohybrid-mbr isolinux/isohdpfx.bin \
 -boot-info-table -eltorito-alt-boot -e boot/grub/efi.img -no-emul-boot \
 -isohybrid-gpt-basdat -o ../$CUSTOMISONAME .
 
+echo "Generando sumas de verificación";
 cd ..
 md5sum $CUSTOMISONAME >> MD5SUMS
 sha1sum $CUSTOMISONAME >> SHA1SUMS

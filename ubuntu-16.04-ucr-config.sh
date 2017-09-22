@@ -261,7 +261,7 @@ then
   sudo update-grub
 
   # Copia esquema que sobrescribe configuracion de Unity y lo compila
-  sudo cp "$BASEDIR"/30_ucr-ubuntu-settings.gschema.override /usr/share/glib-2.0/schemas/
+  sudo cp "$BASEDIR"/gschema/30_ucr-ubuntu-settings.gschema.override /usr/share/glib-2.0/schemas/
   sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 
   # Reinicia todos los valores redefinidos en archivo override para la sesion actual
@@ -302,7 +302,7 @@ then
   sudo rm mediaplayer@patapon.info.v57.shell-extension.zip
 
   # Copia esquema que sobrescribe configuracion de Gnome-shell y lo compila
-  sudo cp "$BASEDIR"/30_ucr-gnome-default-settings.gschema.override /usr/share/glib-2.0/schemas/
+  sudo cp "$BASEDIR"/gschema/30_ucr-gnome-default-settings.gschema.override /usr/share/glib-2.0/schemas/
   sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 
   # Reinicia todos los valores redefinidos en archivo override para la sesion actual
@@ -345,8 +345,8 @@ then
   sudo update-grub
 
   # Copia esquema que sobrescribe configuracion de MATE y lo compila
-  sudo cp "$BASEDIR"/30_ucr-mate-settings.gschema.override /usr/share/glib-2.0/schemas/
-  sudo cp "$BASEDIR"/ubuntu-mate.gschema.override /usr/share/glib-2.0/schemas/
+  sudo cp "$BASEDIR"/gschema/30_ucr-mate-settings.gschema.override /usr/share/glib-2.0/schemas/
+  sudo cp "$BASEDIR"/gschema/ubuntu-mate.gschema.override /usr/share/glib-2.0/schemas/
   sudo rm /usr/share/glib-2.0/schemas/mate-ubuntu.gschema.override
   sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
   
