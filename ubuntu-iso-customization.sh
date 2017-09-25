@@ -18,7 +18,7 @@ Toma una imagen de Ubuntu, la personaliza de acuerdo al script de configuración
 
 # Captando parámetros
 # Is in development environment ?
-DEVELOPMENT=false
+DEVELOPMENT=$(false)
 ZIP=""
 
 while getopts z:hd option
@@ -26,7 +26,7 @@ do
  case "${option}"
  in
  z) ZIP=${OPTARG};;
- d) DEVELOPMENT=true;;
+ d) DEVELOPMENT=$(true);;
  h) myhelp
     exit 0 ;;
  esac
