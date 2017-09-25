@@ -85,6 +85,7 @@ sudo dd if=$ISOPATH bs=512 count=1 of=$EXTRACT/isolinux/isohdpfx.bin
 sudo unsquashfs -d $EDIT mnt/casper/filesystem.squashfs
 sudo umount mnt
 sudo mv $SCRIPTDIR/master.zip $EDIT/root
+sudo mv $EDIT/etc/resolv.conf $EDIT/etc/resolv.conf.bak
 sudo cp /etc/resolv.conf /etc/hosts $EDIT/etc/
 sudo mount --bind /dev/ $EDIT/dev/
 
@@ -120,6 +121,7 @@ EOF
 
 sudo umount $EDIT/dev
 sudo rm $EDIT/etc/resolv.conf $EDIT/etc/hosts
+sudo mv $EDIT/etc/resolv.conf.bak $EDIT/etc/resolv.conf
 
 # CREACION DE NUEVA IMAGEN ISO
 # regenera manifest
