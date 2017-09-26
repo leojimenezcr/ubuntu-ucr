@@ -1,3 +1,6 @@
+**ATENCIÓN: Este proyecto se ha copiado al respositorio de la Comunidad de Software Libre, UCR**
+Por favor haga sus aportes en dicho repositorio: https://github.com/cslucr/ubuntu-ucr
+
 # Ubuntu personalizado para la Universidad de Costa Rica
 
 **Ubuntu UCR** es una propuesta por parte de la *Comunidad de Software Libre de la Universidad de Costa Rica* para ser utilizada en la Institución.
